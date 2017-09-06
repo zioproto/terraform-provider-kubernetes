@@ -262,6 +262,12 @@ func waitForDesiredReplicasFunc(conn *kubernetes.Clientset, ns, name string) res
 		log.Printf("[DEBUG] Current number of labelled replicas of %q: %d (of %d)\n",
 			rc.GetName(), rc.Status.FullyLabeledReplicas, desiredReplicas)
 
+		if len(rc.Status.Conditions) > 0 {
+			cond := rc.Status.Conditions[0]
+			if cond.Type == api.ReplicationControllerReplicaFailure {
+				return resource.NonRetryableError(fmt.Errorf("%s: %s", cond.Reason, cond.Message))
+			}
+		}
 		if rc.Status.FullyLabeledReplicas == desiredReplicas {
 			return nil
 		}
