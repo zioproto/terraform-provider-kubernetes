@@ -603,7 +603,7 @@ resource "kubernetes_persistent_volume" "test" {
 
 resource "google_compute_disk" "test" {
   name  = "%s"
-  type  = "pd-ssd"
+  type  = "pd-standard"
   zone  = "%s"
   image = "debian-8-jessie-v20170523"
   size = 10
@@ -647,7 +647,7 @@ resource "kubernetes_persistent_volume" "test" {
 
 resource "google_compute_disk" "test" {
   name  = "%s"
-  type  = "pd-ssd"
+  type  = "pd-standard"
   zone  = "%s"
   image = "debian-8-jessie-v20170523"
   size = 10
@@ -691,7 +691,7 @@ resource "kubernetes_persistent_volume" "test2" {
 
 resource "google_compute_disk" "test" {
   name  = "%s"
-  type  = "pd-ssd"
+  type  = "pd-standard"
   zone  = "%s"
   image = "debian-8-jessie-v20170523"
   size = 10
@@ -823,7 +823,7 @@ resource "kubernetes_persistent_volume" "test" {
 
 resource "google_compute_disk" "test" {
   name  = "%s"
-  type  = "pd-ssd"
+  type  = "pd-standard"
   zone  = "%s"
   image = "debian-8-jessie-v20170523"
   size = 10
@@ -893,7 +893,7 @@ resource "kubernetes_storage_class" "second" {
 	}
 	storage_provisioner = "kubernetes.io/gce-pd"
 	parameters {
-		type = "pd-ssd"
+		type = "pd-standard"
 	}
 }
 
