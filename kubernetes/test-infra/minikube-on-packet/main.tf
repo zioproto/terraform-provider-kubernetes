@@ -102,6 +102,7 @@ resource "packet_device" "minikube" {
       # Extract certs so they can be transfered back to client
       "mkdir -p /tmp/${var.dotminikube_path}",
       "minikube ip | tr -d \"\n\" > /tmp/client/local-ip.txt",
+      "ls -la ~/.minikube", # TODO: Wait?
       "cp -r ~/.minikube/{ca.crt,client.crt,client.key} /tmp/${var.dotminikube_path}/",
     ]
   }
